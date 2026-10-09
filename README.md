@@ -14,8 +14,21 @@
 python-practice/
 ├── basics/          # 基础语法练习（变量、条件、循环、函数）
 ├── exercises/       # 刷题记录
-└── projects/        # 小项目
+├── projects/        # 小项目
+├── docs/            # 学习资料（课堂提速包、GitHub 用法）
+├── 提交到GitHub.command   # 双击即可提交并推送
+└── README.md
 ```
+
+## 提交到 GitHub
+
+```bash
+git add -A
+git commit -m "第X课：具体做了什么"
+git push
+```
+
+或者双击 `提交到GitHub.command`。仓库地址：<https://github.com/Xthyi/python-tian>
 
 ## 进度
 
