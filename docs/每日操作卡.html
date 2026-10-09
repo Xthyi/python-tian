@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日操作卡 · Python + GitHub</title>
+<style>
+  :root{
+    --bg:#f6f7f9;
+    --card:#ffffff;
+    --ink:#1c1f23;
+    --ink-soft:#5b6570;
+    --line:#e3e7eb;
+    --blue:#2f6fed;
+    --blue-soft:#eaf1ff;
+    --green:#127a3d;
+    --green-soft:#e8f6ec;
+    --amber:#9a6400;
+    --amber-soft:#fdf3e0;
+    --red:#b3261e;
+    --red-soft:#fdeceb;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:32px 20px 60px;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7;
+    font-size:15px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  header{margin-bottom:26px;}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:-0.3px;}
+  .sub{color:var(--ink-soft);font-size:14px;}
+
+  .status{
+    display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px;
+  }
+  .chip{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:9px 14px;font-size:13px;color:var(--ink-soft);
+  }
+  .chip b{color:var(--ink);font-size:14px;}
+
+  h2{
+    font-size:19px;margin:34px 0 4px;display:flex;align-items:center;gap:9px;
+  }
+  h2 .num{
+    background:var(--ink);color:#fff;width:24px;height:24px;border-radius:7px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:13px;
+  }
+  .lead{color:var(--ink-soft);font-size:14px;margin:0 0 14px;}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;margin-bottom:12px;
+  }
+  .card .title{font-weight:600;margin-bottom:6px;font-size:15px;}
+  .card p{margin:0 0 8px;color:var(--ink-soft);font-size:14px;}
+  .card p:last-child{margin-bottom:0;}
+
+  code, .cmd{
+    font-family:"SF Mono",Menlo,Consolas,monospace;
+  }
+  code{background:#eef1f4;padding:1px 6px;border-radius:5px;font-size:13px;}
+
+  .cmd{
+    display:flex;align-items:center;gap:10px;
+    background:#1c1f23;color:#e8eaed;border-radius:9px;
+    padding:10px 12px;margin:8px 0;font-size:13.5px;
+  }
+  .cmd span{flex:1;word-break:break-all;}
+  .cmd button{
+    background:#33383f;color:#e8eaed;border:none;border-radius:6px;
+    padding:5px 11px;font-size:12px;cursor:pointer;flex-shrink:0;
+  }
+  .cmd button:hover{background:#454b53;}
+  .cmd button.ok{background:var(--green);}
+
+  .tag{
+    display:inline-block;font-size:12px;padding:2px 9px;border-radius:20px;
+    font-weight:600;margin-left:6px;vertical-align:middle;
+  }
+  .t-blue{background:var(--blue-soft);color:var(--blue);}
+  .t-green{background:var(--green-soft);color:var(--green);}
+  .t-amber{background:var(--amber-soft);color:var(--amber);}
+  .t-red{background:var(--red-soft);color:var(--red);}
+
+  table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px;}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{color:var(--ink-soft);font-weight:600;font-size:13px;}
+  td:first-child{white-space:nowrap;width:130px;}
+  tr:last-child td{border-bottom:none;}
+
+  .note{
+    background:var(--amber-soft);border-left:3px solid var(--amber);
+    border-radius:0 8px 8px 0;padding:12px 15px;margin:12px 0;font-size:14px;
+  }
+  .note b{color:var(--amber);}
+
+  .steps{margin:0;padding-left:22px;}
+  .steps li{margin-bottom:7px;}
+
+  footer{margin-top:40px;color:var(--ink-soft);font-size:13px;text-align:center;}
+  .divider{height:1px;background:var(--line);margin:32px 0 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>每日操作卡</h1>
+    <div class="sub">Python 写 → 跑 → 改　·　GitHub 看 → 提交 → 推送。每天就这 6 个动作，别的都不用管。</div>
+  </header>
+
+  <div class="status">
+    <div class="chip">仓库 <b>Xthyi / python-tian</b></div>
+    <div class="chip">本机目录 <b>~/Documents/python-practice</b></div>
+    <div class="chip">已有提交 <b>6 次</b></div>
+    <div class="chip">当前进度 <b>列表 / 字典 / 函数</b></div>
+  </div>
+
+  <h2><span class="num">1</span>Python：三个动作</h2>
+  <p class="lead">不用记命令，记住这个循环就行 —— 写完就跑，跑了就改。</p>
+
+  <div class="card">
+    <div class="title">动作 1 · 写<span class="tag t-blue">改文件</span></div>
+    <p>打开 <code>~/Documents/python-practice/exercises/01_成绩统计练习.py</code>，找到 <code># TODO</code>，把代码填进去。</p>
+    <p>用 IDLE 打开就双击文件；或者终端里 <code>open 文件名.py</code>。</p>
+  </div>
+
+  <div class="card">
+    <div class="title">动作 2 · 跑<span class="tag t-blue">看结果</span></div>
+    <p>IDLE 里按 <code>F5</code>。想在终端跑，复制下面这条：</p>
+    <div class="cmd"><span>cd ~/Documents/python-practice &amp;&amp; python3 exercises/01_成绩统计练习.py</span><button onclick="cp(this)">复制</button></div>
+    <p>跑完会直接告诉你：<b>做对几题、哪题报错</b>。报错不用怕，最后一行才是重点。</p>
+  </div>
+
+  <div class="card">
+    <div class="title">动作 3 · 改<span class="tag t-blue">再跑一次</span></div>
+    <p>报错就改一行，再按 F5。<b>写 10 遍比看 10 遍管用。</b></p>
+    <p>卡住超过 10 分钟 → 才去看 <code>01_成绩统计_参考答案.py</code>。看懂答案不算会，关掉答案自己重写一遍才算。</p>
+  </div>
+
+  <h2><span class="num">2</span>GitHub：三个动作</h2>
+  <p class="lead">一句话理解：<b>Git 是"存档"，GitHub 是"云备份"。你写完存档，再传上去。</b></p>
+
+  <div class="card">
+    <div class="title">动作 1 · 看看改了啥<span class="tag t-green">看状态</span></div>
+    <div class="cmd"><span>gstate</span><button onclick="cp(this)">复制</button></div>
+    <p>红色的就是"改过但还没存档"的文件。</p>
+  </div>
+
+  <div class="card">
+    <div class="title">动作 2 · 存档并上传<span class="tag t-green">一条搞定</span></div>
+    <div class="cmd"><span>gpush "第2课：成绩统计练习"</span><button onclick="cp(this)">复制</button></div>
+    <p>引号里写这次做了什么，写具体点，别写"更新"。这条命令 = 存档 + 上传，一步到位。</p>
+  </div>
+
+  <div class="card">
+    <div class="title">动作 3 · 确认传上去了<span class="tag t-green">看记录</span></div>
+    <div class="cmd"><span>glog</span><button onclick="cp(this)">复制</button></div>
+    <p>打开网页看你上传的文件：</p>
+    <div class="cmd"><span>github</span><button onclick="cp(this)">复制</button></div>
+  </div>
+
+  <div class="note">
+    <b>什么时候该提交？</b>做完一道题、写完一节课的笔记，就提交一次。<br>
+    别攒一周 —— 攒久了就变成一堆乱七八糟的改动，你自己都看不懂。
+  </div>
+
+  <h2><span class="num">3</span>今晚 10 分钟怎么花</h2>
+  <p class="lead">别贪多。就这三件事，做完就睡。</p>
+  <div class="card">
+    <ol class="steps">
+      <li>打开 <code>exercises/01_成绩统计练习.py</code>，先按 F5 跑一次，看看提示长什么样</li>
+      <li>挑一题做（建议先做第 3 题，最简单），跑通为止</li>
+      <li>终端敲一句 <code>gpush "第2课：成绩统计练习第X题"</code>，然后 <code>github</code> 看看网页上有没有</li>
+    </ol>
+  </div>
+
+  <h2><span class="num">4</span>卡住了怎么办</h2>
+  <div class="card">
+    <table>
+      <tr><th>现象</th><th>怎么办</th></tr>
+      <tr><td>终端说 command not found</td><td>命令拼错了，或者不在仓库目录。先敲 <code>cd ~/Documents/python-practice</code></td></tr>
+      <tr><td>python3 跑不动</td><td>换 <code>python</code> 试试；或者直接用 IDLE 按 F5</td></tr>
+      <tr><td>gpush 报 rejected</td><td>别人/别的设备先改了。先 <code>git pull</code> 再 <code>gpush</code></td></tr>
+      <tr><td>报错看不懂</td><td>只看最后一行，把最后一行原样发给 AI 问</td></tr>
+      <tr><td>GitHub 页面全英文</td><td>看 <code>docs/GitHub页面中文导航.html</code>，那个是中文对照版</td></tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+  <footer>每天 6 个动作，坚持两周就会了。 · 更新于 2026-10-09</footer>
+</div>
+
+<script>
+function cp(btn){
+  var text = btn.parentElement.querySelector('span').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var old = btn.innerText;
+    btn.innerText = '已复制';
+    btn.classList.add('ok');
+    setTimeout(function(){ btn.innerText = old; btn.classList.remove('ok'); }, 1500);
+  });
+}
+</script>
+</body>
+</html>
